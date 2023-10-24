@@ -69,6 +69,7 @@ io.on("connection", (socket) => {
           con.gas(null, device);
           console.log(device);
           socket.emit("message", "Whatsapp connected");
+          socket.emit("message", "<span class='text-success'>Whatsapp Already connected, You can use Rest API</span>");
           socket.emit("ready", device);
         }
         console.log(connection);

@@ -8,7 +8,7 @@ process.setMaxListeners(0);
 const http = require("http");
 const express = require("express");
 const bodyParser = require("body-parser");
-const port = 9000;
+const port = process.env.PORT || 9000;
 const fs = require("fs");
 const qrcode = require("qrcode");
 const pino = require("pino");
@@ -18,16 +18,16 @@ const con = require("./core/core.js");
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server);
+// const io = socketIO(server);
 app.use(express.static("public"));
 // config cors
-// const io = require("socket.io")(server, {
-//   cors: {
-//     origin: "https://stiker-label.com",
-//     methods: ["GET", "POST"],
-//     credentials: true,
-//   },
-// });
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
 
 let x;
 

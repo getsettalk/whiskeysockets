@@ -42,6 +42,7 @@ io.on("connection", (socket) => {
   socket.on("StartConnection", async (device) => {
     if (fs.existsSync(path.concat(device))) {
       socket.emit("message", "Whatsapp connected");
+      socket.emit("message", "<span class='text-success font-weight-bold'>Great!! Now You can use rest api to send message</span>");
       socket.emit("ready", device);
     } else {
       const { state, saveCreds } = await useMultiFileAuthState(

@@ -45,3 +45,7 @@ you can use like this:
 
 - 3rd 
 ![image](https://github.com/fahmiffa/whiskeysockets/assets/49394996/f322e9f4-a18e-47dc-b8fa-467c389426c6)
+
+
+## Where Should host:
+ You can host your own VPS but if you want to host free than https://render.com is good for this, and its tested.

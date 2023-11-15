@@ -125,9 +125,18 @@ app.post(
       var type = req.body.type;
       var msg = req.body.message;
 
+      if (type === "image") {
+        var imageURL = req.body.imageURL;
+      }
+
       if (fs.existsSync(path.concat(number))) {
         try {
-          con.gas(msg, number, to, type);
+     
+          if (type === "image") {
+            con.gas(msg, number, to, type, imageURL);
+          } else{
+            con.gas(msg, number, to, type);
+          }
           res.writeHead(200, {
             "Content-Type": "application/json",
           });

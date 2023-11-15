@@ -3,6 +3,7 @@ const {
   DisconnectReason,
   useMultiFileAuthState,
 } = require("@whiskeysockets/baileys");
+const axios = require("axios");
 
 const pino = require("pino");
 const fs = require("fs");
@@ -10,11 +11,11 @@ const { Console } = require("console");
 const path = "sessions/";
 let x;
 
-exports.gas = function (msg, no, to, type) {
-  connect(no, msg, to, type);
+exports.gas = function (msg, no, to, type, imageURL = '') {
+  connect(no, msg, to, type, imageURL);
 };
 
-async function connect(sta, msg, to, type) {
+async function connect(sta, msg, to, type, imageURL) {
   const { state, saveCreds } = await useMultiFileAuthState(path.concat(sta));
 
   const sock = makeWASocket({
@@ -24,7 +25,7 @@ async function connect(sta, msg, to, type) {
     browser: ["FFA", "EDGE", "1.0"],
   });
 
-  sock.ev.on("connection.update", (update) => {
+  sock.ev.on("connection.update", async (update) => {
     const { connection, lastDisconnect, qr } = update;
 
     if (connection == "connecting") return;
@@ -36,7 +37,12 @@ async function connect(sta, msg, to, type) {
         return;
       } else if (statusCode === DisconnectReason.loggedOut) {
         if (fs.existsSync(path.concat(sta))) {
-          fs.unlinkSync(path.concat(sta));
+          try {
+            fs.unlinkSync(path.concat(sta));
+          } catch (err) {
+            console.error("Error deleting file:", err);
+          }
+          // fs.unlinkSync(path.concat(sta));
         }
         return;
       }
@@ -52,11 +58,23 @@ async function connect(sta, msg, to, type) {
         // }
 
         const id = to + "@s.whatsapp.net";
+        const times = new Date().toLocaleDateString();
         if (type === "chat") {
           sock.sendMessage(id, {
             text: msg,
           });
         }
+        // doc 
+        if (type === "image") {
+          sock.sendMessage(
+            id,
+            {
+              image: { url: imageURL },
+              caption: `${msg}, ${times}`
+            }
+          );
+        }
+
       }
     }
   });

@@ -1,0 +1,57 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Compaq\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Program Files\OpenJDK\jdk-11.0.18.10-hotspot\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;E:\xampp\php;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\Compaq\AppData\Local\Android\SDK\cmdline-tools\tools\bin;C:\Users\Compaq\AppData\Local\Android\SDK\platform-tools;C:\Users\Compaq\AppData\Local\Android\SDK\cmdline-tools\tools;C:\ProgramData\ComposerSetup\bin;C:\Users\Compaq\AppData\Local\Microsoft\WindowsApps;;C:\Users\Compaq\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Compaq\AppData\Roaming\npm;C:\Users\Compaq\AppData\Roaming\Composer\vendor\bin
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  18.16.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ETIMEDOUT 2405:200:1607:2820:41::36:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1494:16)
+
+npm manifest: 
+  {
+    "name": "waf",
+    "version": "1.0.2",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+      "start": "node index.js",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "engines": {
+      "npm": "9.5.1",
+      "node": "18.16.1"
+    },  
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@adiwajshing/keyed-db": "^0.2.4",
+      "@whiskeysockets/baileys": "^6.2.1",
+      "axios": "^0.27.2",
+      "body-parser": "^1.20.0",
+      "eslint": "^8.20.0",
+      "express": "^4.18.1",
+      "express-validator": "^6.14.0",
+      "multer": "^1.4.5-lts.1",
+      "nodemon": "^2.0.19",
+      "qrcode": "^1.5.0",
+      "qrcode-terminal": "^0.12.0",
+      "socket.io": "^4.4.1",
+      "typescript": "^4.7.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

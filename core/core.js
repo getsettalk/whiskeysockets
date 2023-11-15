@@ -3,7 +3,7 @@ const {
   DisconnectReason,
   useMultiFileAuthState,
 } = require("@whiskeysockets/baileys");
-const axios = require("axios");
+
 
 const pino = require("pino");
 const fs = require("fs");
